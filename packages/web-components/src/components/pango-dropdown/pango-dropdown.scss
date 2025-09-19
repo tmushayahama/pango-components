@@ -1,0 +1,60 @@
+:host {
+  --pango-dropdown-bg: #fff;
+  --pango-dropdown-text: var(--pango-toolbar-color, #ebc336);
+  --pango-dropdown-hover-bg: #ebc3361a;
+  --pango-dropdown-text-hover: var(--pango-toolbar-hover-color, #f5e19b);
+  --pango-dropdown-menu-text: var(--pango-toolbar-dropdown-color, #173672);
+  --pango-dropdown-font: var(--pango-button-font-size, 1em);
+
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  background: none;
+  border: none;
+  color: var(--pango-dropdown-text);
+  font-size: var(--pango-dropdown-font);
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    color: var(--pango-dropdown-text-hover);
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--pango-dropdown-bg);
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &.active {
+    display: block;
+  }
+
+  ::slotted(a) {
+    display: block;
+    padding: 8px 16px;
+    color: var(--pango-dropdown-menu-text);
+    text-decoration: none;
+    font-size: var(--pango-dropdown-font);
+
+    &:hover {
+      background: var(--pango-dropdown-hover-bg);
+    }
+  }
+}

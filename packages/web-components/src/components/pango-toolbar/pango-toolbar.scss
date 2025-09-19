@@ -1,0 +1,190 @@
+:host {
+  --pango-primary-color: #173672;
+  --pango-primary-light: #627491;
+  --pango-primary-dark: #102653;
+  --pango-accent-color: #ebc336;
+  --pango-accent-light: #f5e19b;
+  --pango-accent-mid: #eecc54;
+
+  --pango-toolbar-height: 50px;
+  --pango-toolbar-bg: var(--pango-primary-color);
+  --pango-toolbar-color: var(--pango-accent-color);
+  --pango-toolbar-hover-color: var(--pango-accent-light);
+  --pango-toolbar-border-color: var(--pango-accent-light);
+  --pango-toolbar-dropdown-bg: white;
+  --pango-toolbar-dropdown-color: var(--pango-primary-color);
+  --pango-toolbar-dropdown-hover-bg: #f1f1f1;
+
+  --pango-header-font-size: 1.5em;
+  --pango-header-font-weight: bold;
+  --pango-subheader-font-size: 1.5em;
+  --pango-subheader-font-weight: normal;
+  --pango-button-font-size: 1em;
+}
+
+.pango-toolbar {
+  width: 100%;
+  height: var(--pango-toolbar-height);
+  background-color: var(--pango-toolbar-bg);
+  color: var(--pango-toolbar-color);
+  z-index: 50;
+  overflow-y: visible;
+
+  &__container {
+    padding: 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__menu-button {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 8px;
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo-link {
+    text-decoration: none;
+    color: var(--pango-toolbar-color);
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+  }
+
+  &__logo-text {
+    font-size: var(--pango-header-font-size);
+    font-weight: var(--pango-header-font-weight);
+    margin-right: 8px;
+  }
+
+  &__header-text {
+    font-size: var(--pango-subheader-font-size);
+    font-weight: var(--pango-subheader-font-weight);
+  }
+
+  &__actions {
+    display: none;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  &__social-links {
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+  }
+
+  &__action-buttons {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid var(--pango-toolbar-border-color);
+  }
+
+  &__action-link {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    font-size: var(--pango-button-font-size);
+    cursor: pointer;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+  }
+
+  &__select {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    font-size: var(--pango-button-font-size);
+    cursor: pointer;
+    padding: 8px 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+
+    option {
+      background: var(--pango-toolbar-dropdown-bg);
+      color: var(--pango-toolbar-dropdown-color);
+      padding: 12px;
+    }
+  }
+
+  &__logo-section {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-divider {
+    border-left: 1px solid var(--pango-toolbar-border-color);
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__partner-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-image {
+    height: 100%;
+    max-height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  pango-dropdown {
+    .dropdown-content {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      min-width: 160px;
+      padding: 8px 0;
+
+      a {
+        color: var(--pango-toolbar-dropdown-color);
+        font-size: var(--pango-button-font-size);
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: rgba(235, 195, 54, 0.1);
+        }
+      }
+    }
+  }
+}

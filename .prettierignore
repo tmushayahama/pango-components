@@ -1,0 +1,16 @@
+# This is a `.prettierignore` file.
+# It inherits from `.gitignore` automatically.
+# Reference: https://prettier.io/docs/en/ignore
+
+# Stencil-generated files
+/packages/web-components/dist
+/packages/web-components/loader
+/packages/web-components/src/components.d.ts
+/packages/web-components/www
+
+# Files copied from other projects
+/packages/web-components/src/globals/@noctua.form
+
+/website/.docusaurus
+/website/build
+/website/docs/components/**/readme.md

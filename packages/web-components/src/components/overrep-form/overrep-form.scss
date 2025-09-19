@@ -1,0 +1,158 @@
+:host {
+  display: block;
+  width: var(--overrep-width, 500px);
+
+  // Define default CSS Custom Properties
+  --overrep-width: 500px;
+  --overrep-height: 200px;
+  --overrep-primary-color: #344f30;
+  --overrep-secondary-color: #e2e8f0;
+  --overrep-text-color: #1a202c;
+  --overrep-border-color: #cccccc;
+  --overrep-background-color: #ffffff;
+  --overrep-placeholder-color: #9ca3af;
+
+  --overrep-border-width: 1px;
+  --overrep-border-style: solid;
+  --overrep-form-spacing: 1rem;
+  --overrep-border-radius: 0.375rem;
+  --overrep-font-size: 0.875rem;
+
+  // Input
+  --overrep-input-padding: 0.5rem;
+
+  // Button
+  --overrep-button-padding: 0.5rem 1rem;
+  --overrep-button-border-radius: 0;
+  --overrep-button-width: 10rem;
+  --overrep-button-height: 2.5rem;
+  --overrep-button-border: none;
+
+  // Select
+  --overrep-select-height: 2.5rem;
+
+  // Hint
+  --overrep-hint-font-size: 0.75rem;
+  --overrep-hint-color: #4a5568;
+}
+
+.overrep-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: var(--overrep-height);
+  font-family: system-ui, -apple-system, sans-serif;
+  border: var(--overrep-border-width) var(--overrep-border-style) var(--overrep-border-color);
+  border-radius: var(--overrep-border-radius);
+  padding: var(--overrep-form-spacing);
+  background-color: var(--overrep-background-color);
+  box-sizing: border-box;
+
+  // Main content area with fixed spacing
+  > * + * {
+    margin-top: var(--overrep-form-spacing);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: var(--overrep-font-size);
+    font-weight: 500;
+    color: var(--overrep-text-color);
+    margin: 0;
+  }
+
+  %form-control {
+    width: 100%;
+    padding: var(--overrep-input-padding);
+    border: var(--overrep-border-width) var(--overrep-border-style) var(--overrep-border-color);
+    border-radius: var(--overrep-border-radius);
+    background-color: var(--overrep-background-color);
+    color: var(--overrep-text-color);
+    font-family: inherit;
+    font-size: var(--overrep-font-size);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    margin: 0;
+
+    &:focus {
+      outline: none;
+      border-color: var(--overrep-primary-color);
+    }
+
+    &::placeholder {
+      color: var(--overrep-placeholder-color);
+    }
+  }
+
+  .form-textarea {
+    @extend %form-control;
+    height: 80px; // Fixed height instead of min-height
+    resize: none; // Prevent resizing to maintain layout
+    margin: 0;
+  }
+
+  .form-select {
+    @extend %form-control;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--overrep-input-padding) center;
+    background-size: 1.25em;
+    padding-right: calc(var(--overrep-input-padding) * 3);
+    appearance: none;
+    height: var(--overrep-select-height);
+  }
+
+  .button-group {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    gap: var(--overrep-form-spacing);
+    margin-top: auto;
+  }
+
+  .button {
+    padding: var(--overrep-button-padding);
+    border: var(--overrep-button-border);
+    border-radius: var(--overrep-button-border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--overrep-font-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    transition: opacity 0.2s ease;
+    width: var(--overrep-button-width);
+    height: var(--overrep-button-height);
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &--primary {
+      background-color: var(--overrep-primary-color);
+      color: var(--overrep-background-color);
+    }
+
+    &--secondary {
+      background-color: var(--overrep-secondary-color);
+      color: var(--overrep-text-color);
+    }
+  }
+
+  .hint {
+    font-size: var(--overrep-hint-font-size);
+    color: var(--overrep-hint-color);
+    margin: 0;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
