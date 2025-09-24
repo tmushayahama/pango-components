@@ -15,6 +15,11 @@ export class PangoGene {
   @Element() el!: HTMLElement;
 
   @Prop() geneId!: string;
+  @Prop() showHeader: boolean = false;
+  @Prop() showStats: boolean = true;
+  @Prop() showSummary: boolean = true;
+  @Prop() showDetails: boolean = false;
+
 
   @State() annotations: Annotation[] = [];
   @State() groupedTerms: GroupedTerms | null = null;
@@ -30,6 +35,8 @@ export class PangoGene {
   private apiService = new ApiService();
   private linksService = new LinksService();
   private genesService = new GenesService();
+
+  private geneUrl = `${ENVIRONMENT.homeUrl}/gene/${this.geneId}`;
 
   async componentWillLoad() {
     this.checkScreenSize();
@@ -67,6 +74,8 @@ export class PangoGene {
 
       // Use genesService to transform terms
       this.groupedTerms = this.genesService.transformTerms(this.annotations, 150);
+
+      console.log('Loaded annotations:', this.annotations);
 
       this.isLoading = false;
     } catch (error) {
@@ -510,31 +519,27 @@ export class PangoGene {
                             </div>
                           ))}
                           {evidence.references && evidence.references.length > 2 && (
-                            <div class="more-references">
+                            <a class="more-references" href={this.geneUrl} target="_blank" rel="noopener noreferrer">
                               + {evidence.references.length - 2} more reference(s)
-                            </div>
+                            </a>
                           )}
                         </div>
                       </div>
                     ))}
                     {annotation.evidence && annotation.evidence.length > 2 && (
-                      <div class="more-evidence">
+                      <a class="more-evidence" href={this.geneUrl} target="_blank" rel="noopener noreferrer">
                         + {annotation.evidence.length - 2} more evidence
-                      </div>
+                      </a>
                     )}
                   </td>
                   <td class="contributors-cell">
-                    {annotation.detailedGroups?.map((group, groupIdx) =>
+                    {annotation.groups?.map((group) =>
                       group && (
-                        <a
-                          key={groupIdx}
-                          href={group.id}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="contributor-link"
+                        <p
+                          key={group}
                         >
-                          {group.label}
-                        </a>
+                          {group}
+                        </p>
                       )
                     )}
                   </td>
@@ -575,10 +580,10 @@ export class PangoGene {
     return (
       <Host>
         <div class="pango-gene-container">
-          {this.renderGeneHeader()}
-          {this.renderStatsHeader()}
-          {this.renderGeneSummary()}
-          {this.renderAnnotationTable()}
+          {this.showHeader && this.renderGeneHeader()}
+          {this.showStats && this.renderStatsHeader()}
+          {this.showSummary && this.renderGeneSummary()}
+          {this.showDetails && this.renderAnnotationTable()}
         </div>
       </Host>
     );

@@ -116,6 +116,8 @@
 }
 
 .stats-header {
+  max-width: 1152px;
+  margin: auto;
   background: linear-gradient(
     to right,
     #f1f5f9,
@@ -631,7 +633,6 @@
 
           .header-cell {
             padding: 16px;
-            text-align: center;
             font-weight: 600;
             background-color: #f8fafc; // slate-50
           }

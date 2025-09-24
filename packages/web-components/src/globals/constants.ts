@@ -1,5 +1,6 @@
 export const ENVIRONMENT = {
-  apiUrl: 'https://functionome.geneontology.org/api/',
+  homeUrl: 'http://3.92.69.173',
+  apiUrl: 'http://3.92.69.173/api/graphql',
   contactUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLScX_caoY-mqsyK5Y6M2bof7EXVG0UY5DhOQ67zBMoAKKlRF4Q/viewform?usp=sharing',
   contactPrefillUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScX_caoY-mqsyK5Y6M2bof7EXVG0UY5DhOQ67zBMoAKKlRF4Q/viewform?usp=pp_url',

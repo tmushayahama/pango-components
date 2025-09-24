@@ -6,13 +6,13 @@ export class ApiService {
   private apiVersion: string;
 
   constructor() {
-    this.baseUrl = ENVIRONMENT.apiUrl || '';
+    this.baseUrl = ENVIRONMENT.apiUrl;
     this.apiVersion = 'pango-1'; // Default API version
   }
 
   private async makeGraphQLRequest(query: string, variables?: Record<string, any>): Promise<any> {
     try {
-      const response = await fetch(`${this.baseUrl}/graphql`, {
+      const response = await fetch(`${this.baseUrl}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ export class ApiService {
     return data.annotationStats;
   }
 
-  async getSlimTermsAutocomplete(keyword: string, autocompleteType?: string): Promise<any> {
+  async getSlimTermsAutocomplete(keyword: string): Promise<any> {
     const query = `
       query GetSlimTermAutocomplete($keyword: String!, $filterArgs: AnnotationFilterArgs) {
         slimTermsAutocomplete(keyword: $keyword, filterArgs: $filterArgs) {

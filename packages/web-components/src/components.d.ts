@@ -62,6 +62,22 @@ export namespace Components {
     }
     interface PangoGene {
         "geneId": string;
+        /**
+          * @default false
+         */
+        "showDetails": boolean;
+        /**
+          * @default false
+         */
+        "showHeader": boolean;
+        /**
+          * @default true
+         */
+        "showStats": boolean;
+        /**
+          * @default true
+         */
+        "showSummary": boolean;
     }
     interface PangoToolbar {
         /**
@@ -197,6 +213,22 @@ declare namespace LocalJSX {
     }
     interface PangoGene {
         "geneId": string;
+        /**
+          * @default false
+         */
+        "showDetails"?: boolean;
+        /**
+          * @default false
+         */
+        "showHeader"?: boolean;
+        /**
+          * @default true
+         */
+        "showStats"?: boolean;
+        /**
+          * @default true
+         */
+        "showSummary"?: boolean;
     }
     interface PangoToolbar {
         /**
